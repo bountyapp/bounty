@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %} BOUNTY:detail {% endblock %}
+
+{% block head %}
+
+{% endblock %}
+
+
+{% block content %}
+<header>
+
+</header>
+
+<body>
+    <div>
+        <div>
+            <span>Bounty</span>
+        </div>
+        <form action="{% url 'bounty:detail' %}" method="post">
+            <div id="request_content_box">
+                <div>
+                    contents
+                </div>
+                <div>
+                    place to go
+                </div>
+                <div>
+                    place to meet
+                </div>
+                <div>
+                    comments
+                </div>
+                <div>
+                    map
+                </div>
+                <div>
+                    cost & reward
+                </div>
+            </div>
+            <div id="accept_button_box">
+                <a href="{% url 'bounty:progress' %}"><input type="button" value="Accept"></a>
+            </div>
+        </form>
+    </div>
+</body>
+
+{% endblock %}
+
+
+{% block script %}
+
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %} BOUNTY:progress {% endblock %}
+
+{% block head %}
+
+{% endblock %}
+
+
+{% block content %}
+<header>
+
+</header>
+
+<body>
+    <div>
+        <div>
+            <span>Bounty in Progress</span>
+        </div>
+        <form action="{% url 'bounty:request' %}" method="post">
+            <div id="request_content_box">
+                <div class="">
+                    Requested by
+                </div>
+                <div class="">
+                    Fulfilled by
+                </div>
+                <div class="">
+                    Store/Items
+                </div>
+                <div class="">
+                    Total
+                </div>
+                <div class="">
+                    map
+                </div>
+                <div>
+                    <div class="">
+                        <section>Arriving In</section>
+                        <section>~15min</section>
+                    </div>
+                    <div class="">
+                        <section>ETA</section>
+                        <section>4:46PM</section>
+                    </div>
+                </div>
+            </div>
+            <div id="button_box" class="">
+                <a href=""><input type="button" value="call"></a>
+                <a href=""><input type="button" value="message"></a>
+                <a href=""><input type="button" value="X"></a>
+                <a href="{% url 'bounty:confirm_cus' %}"><input type="button" value="O"></a>
+            </div>
+        </form>
+    </div>
+</body>
+
+{% endblock %}
+
+
+{% block script %}
+
+{% endblock %}

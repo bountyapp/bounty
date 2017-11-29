@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %} BOUNTY:register {% endblock %}
+
+{% block head %}
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="">
+    <!--<img src="" alt="">-->
+</div>
+
+<div class="">
+    <form action="{% url 'accounts:register' %}" method="post">
+        {% csrf_token %}
+        <div id="register_form">
+            <input type="text" value="user_id">
+            <input type="text" value="user_password">
+        </div>
+        <div>
+            <a href="{% url 'accounts:login_page' %}"><input type="button" name="register" value="register"></a>
+        </div>
+
+    </form>
+</div>
+
+{% endblock %}
+
+
+{% block script %}
+
+{% endblock %}

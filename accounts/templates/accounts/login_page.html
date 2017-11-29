@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %} BOUNTY:login {% endblock %}
+
+{% block head %}
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="">
+    <!--<img src="" alt="">-->
+</div>
+
+<div class="">
+    <form action="{% url 'accounts:login_page' %}" method="post">
+        {% csrf_token %}
+        <div id="login_container">
+            <div>
+                <label for="">e-mail</label>
+                <input type="text" name="user_id" value="">
+            </div>
+            <div>
+                <label for="">password</label>
+                <input type="text" name="user_password" value="">
+            </div>
+        </div>
+        <div id="login_button_container">
+            <a href="{% url 'bounty:main' %}"><input type="button" name="sign_in" value="sign in"></a>
+            <a href="{% url 'accounts:register_page' %}"><input type="button" name="" value="register"></a>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
+
+
+{% block script %}
+
+{% endblock %}

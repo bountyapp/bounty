@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %} BOUNTY {% endblock %}
+
+{% block head %}
+
+{% endblock %}
+
+
+{% block content %}
+<header>
+    <div id="nav" class="">
+
+    </div>
+</header>
+
+<body>
+    <div>
+        <div>
+            <span>Bounty Board</span>
+        </div>
+        <div>
+            map
+        </div>
+        <div id="Bounty_box">
+            <a href="{% url 'bounty:detail' %}">
+            <div class="">
+                <div class="">
+                    <section>Target --> Unit2</section>
+                </div>
+                <div class="">
+                    <section>cost</section>
+                    <section> ~$12</section>
+                </div>
+                <div class="">
+                    <section>reward</section>
+                    <section>$20.00</section>
+                </div>
+            </div>
+            </a>
+        </div>
+    </div>
+</body>
+
+
+{% endblock %}
+
+
+{% block script %}
+
+{% endblock %}
