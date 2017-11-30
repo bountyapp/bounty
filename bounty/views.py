@@ -1,5 +1,11 @@
+import json
+
+from django.shortcuts import render, redirect
+from bounty.models import Quest
+from bounty.forms import PostingForm
+from django.http import HttpResponse
+
 from django.shortcuts import render
-from bounty.models import User, Quest
 # Create your views here.
 
 
@@ -19,8 +25,12 @@ def ongoing(request):
     return render(request, 'bounty/ongoing.html', )
 
 
+def request_page(request):
+    return render(request, 'bounty/request_page.html', )
+
 def request(request):
-    return render(request, 'bounty/request.html', )
+
+    return render(request, 'bounty/request_page.html',)
 
 
 def bounty_board(request):

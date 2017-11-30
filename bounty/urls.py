@@ -6,6 +6,7 @@ urlpatterns = [
     url(r'^main/$', views.main, name='main'),
     url(r'^profile_req/$', views.profile_req, name='profile_req'),
     url(r'^profile_ful/$', views.profile_ful, name='profile_ful'),
+    url(r'^request_page/$', views.request_page, name='request_page'),
     url(r'^request/$', views.request, name='request'),
     url(r'^ongoing/$', views.ongoing, name='ongoing'),
     url(r'^bounty_board/$', views.bounty_board, name='bounty_board'),

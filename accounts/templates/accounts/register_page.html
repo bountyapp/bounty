@@ -14,14 +14,38 @@
 </div>
 
 <div class="">
-    <form action="{% url 'accounts:register' %}" method="post">
+    <form action="{% url 'accounts:register' %}" method="post" id="register_form">
         {% csrf_token %}
-        <div id="register_form">
-            <input type="text" value="user_id">
-            <input type="text" value="user_password">
+        <div class="">
+            <label>
+                User ID
+            </label>
+            <input type="text" required autocomplete="off" name="username" id="username">
         </div>
-        <div>
-            <a href="{% url 'accounts:login_page' %}"><input type="button" name="register" value="register"></a>
+
+        <div class="">
+            <label>
+                email
+            </label>
+            <input type="email" required autocomplete="off" name="email" id="email">
+        </div>
+
+        <div class="">
+            <label>
+                password
+            </label>
+            <input type="password" required autocomplete="off" name="password1" id="password1">
+        </div>
+
+        <div class="">
+            <label>
+                password check
+            </label>
+            <input type="password" required autocomplete="off" name="password2" id="password2">
+        </div>
+
+        <div class="">
+            <button type="submit">sign up</button>
         </div>
 
     </form>
@@ -31,5 +55,28 @@
 
 
 {% block script %}
-
+<script>
+$(document).ready(function() {
+            $("#register_form").submit(function(e){
+                e.preventDefault();
+                serializedData = $("#register_form").serialize();
+                $.ajax({
+                    type: 'POST',
+                    url: "{% url 'accounts:register' %}",
+                    data: serializedData,
+                    dataType: 'json',
+                    success: function(response) {
+                        if(response.status == "success"){
+                            alert(response.message);
+                            window.location="{% url 'accounts:login_page' %}";
+                        }
+                        else{
+                            alert(response.message)
+                        }
+                    }
+                });
+            });
+            /* end of script */
+        });
+</script>
 {% endblock %}

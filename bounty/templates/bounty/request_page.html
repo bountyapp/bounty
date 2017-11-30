@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block title %} BOUNTY:request {% endblock %}
+
+{% block head %}
+
+{% endblock %}
+
+
+{% block content %}
+<header>
+
+</header>
+
+<body>
+    <div>
+        <div>
+            <span>Bounty</span>
+        </div>
+        <form action="{% url 'bounty:request' %}" method="post">
+            <div id="request_content_box">
+                <div>
+                    <label>
+                        contents
+                    </label>
+                    <input type="text" name="contents" value="">
+                </div>
+                <div>
+                    <label>
+                        due
+                    </label>
+                    <input type="datetime-local" name="contents" value="">
+                </div>
+                <div>
+                    <label>
+                        map
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        place to go
+                    </label>
+                    <input type="text" name="places" value="">
+                    <label>
+                        place to meet
+                    </label>
+                    <input type="text" name="destination" value="">
+                </div>
+                <div>
+                    <label>
+                        comments
+                    </label>
+                    <input type="text" name="comments" value="">
+                </div>
+
+                <div>
+                    <label>
+                        cost & reward
+                    </label>
+                    <input type="text" name="cost" value="cost">
+                    <input type="text" name="reward" value="reward">
+                </div>
+            </div>
+            <div id="post_button_box">
+                <button type="submit" name="post" value="post">post</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+{% endblock %}
+
+
+{% block script %}
+
+{% endblock %}

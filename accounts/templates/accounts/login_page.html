@@ -14,20 +14,20 @@
 </div>
 
 <div class="">
-    <form action="{% url 'accounts:login_page' %}" method="post">
+    <form action="{% url 'accounts:login' %}" method="post" id="login_form">
         {% csrf_token %}
         <div id="login_container">
             <div>
-                <label for="">e-mail</label>
-                <input type="text" name="user_id" value="">
+                <label for="">User ID</label>
+                <input type="text" name="email" value="">
             </div>
             <div>
                 <label for="">password</label>
-                <input type="text" name="user_password" value="">
+                <input type="password" name="password" value="">
             </div>
         </div>
         <div id="login_button_container">
-            <a href="{% url 'bounty:main' %}"><input type="button" name="sign_in" value="sign in"></a>
+            <input type="submit" name="login" value="login">
             <a href="{% url 'accounts:register_page' %}"><input type="button" name="" value="register"></a>
         </div>
     </form>
@@ -37,5 +37,26 @@
 
 
 {% block script %}
-
+<script>
+    $(document).ready(function() {
+        $("#login_form").submit(function(e){
+            e.preventDefault();
+            serializedData = $("#login_form").serialize();
+            $.ajax({
+                type: 'POST',
+                url: "{% url 'accounts:login' %}",
+                data: serializedData,
+                dataType: 'json',
+                success: function(response) {
+                    if(response.status == "success"){
+                        window.location="{% url 'bounty:main' %}"
+                    }
+                    else{
+                        alert(response.message)
+                    }
+                }
+            });
+        });
+    });
+</script>
 {% endblock %}
