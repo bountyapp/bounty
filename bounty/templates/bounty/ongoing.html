@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %} BOUNTY:request {% endblock %}
+
+{% block head %}
+
+{% endblock %}
+
+
+{% block content %}
+<header>
+
+</header>
+
+<body>
+    <div>
+        <div class="">
+            <span>On Going Bounty</span>
+        </div>
+
+        <div class="">
+            <ul>
+                <a href="{% url 'bounty:request' %}"><li>
+                    <div class="bounty_box">
+                        <section id="items">
+                            <span>Redbull</span>
+                        </section>
+                        <section id="progress">
+                            <span>Waiting</span>
+                        </section>
+                    </div>
+                </li></a>
+            </ul>
+        </div>
+
+        <div class="">
+            <a href="{% url 'bounty:request' %}"><input type="button" value="new order"></a>
+        </div>
+    </div>
+</body>
+
+{% endblock %}
+
+
+{% block script %}
+
+{% endblock %}
