@@ -2,7 +2,6 @@ import json
 
 from django.shortcuts import render, redirect
 from bounty.models import Quest
-from bounty.forms import PostingForm
 from django.http import HttpResponse
 
 from django.shortcuts import render
