@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+
+{% block title %} BOUNTY:request {% endblock %}
+
+{% block head %}
+
+{% endblock %}
+
+
+{% block content %}
+<header>
+
+</header>
+
+<body>
+    <div>
+        <div>
+            <span>Bounty</span>
+        </div>
+        <form action="{% url 'bounty:request' %}" method="post" id="posting_form">
+            {% csrf_token %}
+            <div id="request_content_box">
+                <div>
+                    <label>
+                        contents
+                    </label>
+                    <input type="text" name="contents" value="-">
+                </div>
+                <div>
+                    <label>
+                        due
+                    </label>
+                    <input type="datetime-local" name="due" value="">
+                </div>
+                <div>
+                    <label>
+                        map
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        place to go
+                    </label>
+                    <input type="text" name="places" value="-">
+                    <label>
+                        place to meet
+                    </label>
+                    <input type="text" name="destination" value="-">
+                </div>
+                <div>
+                    <label>
+                        comments
+                    </label>
+                    <input type="text" name="comments" value="-">
+                </div>
+
+                <div>
+                    <label>
+                        cost & reward
+                    </label>
+                    <input type="text" name="cost" value="0.0">
+                    <input type="text" name="reward" value="0.0">
+                </div>
+            </div>
+            <div id="post_button_box">
+                <button type="submit">post</button>
+            </div>
+        </form>
+        <div>
+            <a href="{% url 'bounty:bounty_board_cus' %}"><input type="button" value="back"></a>
+        </div>
+    </div>
+</body>
+
+{% endblock %}
+
+
+{% block script %}
+
+<script>
+    $(document).ready(function() {
+        $("#posting_form").submit(function(e){
+            e.preventDefault();
+            serializedData = $("#posting_form").serialize();
+            $.ajax({
+                type: 'POST',
+                url: "{% url 'bounty:request' %}",
+                data: serializedData,
+                dataType: 'json',
+                success: function(response) {
+                    if(response.status == "success"){
+                        alert(response.message)
+                        window.location="{% url 'bounty:bounty_board_cus' %}"
+                    }
+                    else{
+                        alert(response.message)
+                    }
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}

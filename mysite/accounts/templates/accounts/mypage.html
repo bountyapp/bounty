@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+
+{% block title %} BOUNTY:mypage {% endblock %}
+
+{% block head %}
+
+{% endblock %}
+
+
+{% block content %}
+<div>
+    <div id="user_profile">
+        <section>{{ user.username }}</section>
+
+        <section><label>Distance Traveled</label></section>
+
+        <section>
+            <label> # Requested </label>
+            <section>{{ requested }}</section>
+        </section>
+
+        <section>
+            <label> # Fulfilled </label>
+            <section>{{ fulfilled }}</section>
+        </section>
+    </div>
+    <div id="waiting_quests" class="">
+        <label>Waiting</label>
+        {% for quest in quest_waiting %}
+        <a href="{% url 'bounty:detail_cus' quest.id %}">
+            <div>
+                <section>
+                    Contents
+                </section>
+                <section>
+                    {{ quest.contents }}
+                </section>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+    <div id="ongoing_quests_cus" class="">
+        <label>Ongoing_cus</label>
+        {% for quest in quest_ongoing_cus %}
+        <a href="{% url 'bounty:progress_quest_cus' quest.id %}">
+            <div>
+                <section>
+                    Contents
+                </section>
+                <section>
+                    {{ quest.contents }}
+                </section>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+    <div id="ongoing_quests_del" class="">
+        <label>Ongoing_del</label>
+        {% for quest in quest_ongoing_del %}
+        <a href="{% url 'bounty:progress_quest_del' quest.id %}">
+            <div>
+                <section>
+                    Contents
+                </section>
+                <section>
+                    {{ quest.contents }}
+                </section>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+    <div id="complete_quest_cus" class="">
+        <label>Complete_cus</label>
+        {% for quest in quest_complete_cus %}
+        <a href="{% url 'bounty:complete_quest' quest.id %}">
+            <div>
+                <section>
+                    Contents
+                </section>
+                <section>
+                    {{ quest.contents }}
+                </section>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+    <div id="complete_quest_del" class="">
+        <label>Complete_del</label>
+        {% for quest in quest_complete_del %}
+        <a href="{% url 'bounty:complete_quest' quest.id %}">
+            <div>
+                <section>
+                    Contents
+                </section>
+                <section>
+                    {{ quest.contents }}
+                </section>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+
+{% block script %}
+
+{% endblock %}

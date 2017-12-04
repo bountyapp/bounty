@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block title %} BOUNTY:confirm {% endblock %}
+
+{% block head %}
+
+{% endblock %}
+
+
+{% block content %}
+<header>
+
+</header>
+
+<body>
+<div>
+    <span>Confirm Bounty</span>
+</div>
+<form action="{% url 'bounty:confirm' quest.id %}" id="confirm_form">
+    {% csrf_token %}
+    <div>
+        confirm method
+    </div>
+    <div>
+        <div class="">
+            <span>Quick Review</span>
+        </div>
+
+        <div class="">
+            <div>
+                <span>How would you rate your job</span>
+            </div>
+            <div>
+                <input type="number" name="score_del" min="0" max="5" value="{{ quest.score_del }}">
+            </div>
+            <div>
+                    <span>Any extra comment?</br>
+                        (Don't worry they are anonymous)</span>
+                <div>
+                    <input type="text" name="review_del" value="{{ quest.review_del }}">
+                </div>
+            </div>
+            <div>
+                <input type="submit" value="confirm" name="confirm">
+            </div>
+        </div>
+    </div>
+</form>
+</body>
+
+
+{% endblock %}
+
+
+{% block script %}
+<script>
+    $(document).ready(function() {
+        $("#confirm_form").submit(function(e){
+            e.preventDefault();
+            serializedData = $("#confirm_form").serialize();
+            $.ajax({
+                type: 'POST',
+                url: "{% url 'bounty:confirm' quest.id %}",
+                data: serializedData,
+                dataType: 'json',
+                success: function(response) {
+                    if(response.status == "success"){
+                        alert(response.message)
+                        window.location="{% url 'bounty:main' %}"
+                    }
+                    else{
+                        alert(response.message)
+                    }
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}

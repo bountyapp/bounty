@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %} BOUNTY {% endblock %}
+
+{% block head %}
+
+{% endblock %}
+
+
+{% block content %}
+
+<body>
+<div class="container-fluid">
+    <div class="col-md-6 col-sm-6 col-xs-6">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <img src="" alt="" class="img-rounded">
+        </div>
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <a href="{% url 'bounty:bounty_board_cus' %}"><div><span>Offer Bounty</span></div></a>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-sm-6 col-xs-6">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <img src="" alt="" class="img-rounded">
+        </div>
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <a href="{% url 'bounty:bounty_board_del' %}"><div><span>Bounty Hunt</span></div></a>
+        </div>
+    </div>
+</div>
+</body>
+
+
+{% endblock %}
+
+
+{% block script %}
+
+{% endblock %}

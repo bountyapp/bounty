@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block title %} BOUNTY:detail {% endblock %}
+
+{% block head %}
+
+{% endblock %}
+
+
+{% block content %}
+<header>
+
+</header>
+
+<body>
+<div>
+    <div>
+        <span>Bounty</span>
+    </div>
+    <form action="{% url 'bounty:modify_quest' quest.id %}" method="post" id="posting_form">
+        {% csrf_token %}
+        <div id="request_content_box">
+            <div>
+                <label>
+                    contents
+                </label>
+                <input type="text" name="contents" value="{{ quest.contents }}">
+            </div>
+            <div>
+                <label>
+                    due
+                </label>
+                <input type="datetime-local" name="due" value="{{ quest.due }}">
+            </div>
+            <div>
+                <label>
+                    map
+                </label>
+            </div>
+            <div>
+                <label>
+                    place to go
+                </label>
+                <input type="text" name="places" value="{{ quest.places }}">
+                <label>
+                    place to meet
+                </label>
+                <input type="text" name="destination" value="{{ quest.destination }}">
+            </div>
+            <div>
+                <label>
+                    comments
+                </label>
+                <input type="text" name="comments" value="{{ quest.comments }}">
+            </div>
+
+            <div>
+                <label>
+                    cost & reward
+                </label>
+                <input type="text" name="cost" value="{{ quest.cost }}">
+                <input type="text" name="reward" value="{{ quest.reward }}">
+            </div>
+        </div>
+        <div id="post_button_box">
+            <button type="submit">modify</button>
+        </div>
+    </form>
+    <a href="{% url 'bounty:delete_quest' quest.id %}"><button type="submit">delete</button></a>
+    <a href="{% url 'bounty:bounty_board_cus' %}"><input type="button" value="back"></a>
+</div>
+</body>
+
+{% endblock %}
+
+
+{% block script %}
+
+{% endblock %}
