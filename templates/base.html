@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    {% load staticfiles %}
+    <meta charset="utf-8">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <title>{% block title %}BOUNTY APP{% endblock %}</title>
+
+    {% block head %}
+
+    {% endblock %}
+</head>
+
+<body>
+<nav class="navbar navbar-default navbar-fixed-top container_fluid">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Brand</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class=""><a href="{% url 'bounty:bounty_board_cus' %}">Offer</a></li>
+                <li><a href="{% url 'bounty:bounty_board_del' %}">Hunt</a></li>
+                {% if request.user.is_authenticated %}
+                <li class="dropdown"><a href="" class="dropdown-toggle" data-toggle="dropdown">Hi {{ user.username }}<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{% url 'accounts:mypage' %}"><i class="glyphicon glyphicon-user"></i> &nbsp; My page</a></li>
+                        <!--<li><i class="glyphicon glyphicon-envelope"></i> &nbsp; 문의 / 건의사항</li>-->
+                        <li class="divider"></li>
+                        <li><a href="{% url 'accounts:logout' %}"><i class="glyphicon glyphicon-off"></i> &nbsp; logout</a></li>
+                    </ul>
+                </li>
+                {% else %}
+                <li>
+                    <a href="{% url 'accounts:login_page' %}">login</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+
+{% block content %}
+{% endblock %}
+<footer>
+
+</footer>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+{% block script %}
+
+{% endblock %}
+<script>
+    {% if messages %}
+    {% for message in messages %}
+    alert('{{ message }}');
+    {% endfor %}
+    {% endif %}
+</script>
+
+<script>
+    var url = "http://127.0.0.1:8000/bounty{{ quest.id }}/detail_del/";
+    var url2 = "http://127.0.0.1:8000/bounty{{ quest.id }}/progress_quest_del/"
+    var url3 = "http://127.0.0.1:8000/bounty{{ quest.id }}/progress_quest_cus/"
+    $(document).ready(function() {
+        if(document.referrer != url){
+            $("#back_button").click(function(e){
+                window.location.href=document.referrer;
+            });
+        }
+        else{
+            $("#back_button").click(function(e){
+                window.location.href="{% url 'bounty:bounty_board_del' %}";
+            });
+        }
+
+        if(document.referrer != url2 || document.referrer != url3){
+            $("#back_button").click(function (e){
+                window.location.href="{% url 'accounts:mypage' %}"
+            });
+        }
+
+    });
+</script>
+
+
+</body>
+</html>

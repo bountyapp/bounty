@@ -7,5 +7,5 @@ class RegistrationForm(forms.Form):
     password2 = forms.CharField(widget=forms.PasswordInput, label="password(again)")
 
 class AuthenticationForm(forms.Form):
-    email = forms.CharField(widget=forms.TextInput)
+    username = forms.CharField(widget=forms.TextInput)
     password = forms.CharField(widget=forms.PasswordInput)

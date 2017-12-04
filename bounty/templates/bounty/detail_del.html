@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+
+{% block title %} BOUNTY:detail {% endblock %}
+
+{% block head %}
+
+{% endblock %}
+
+
+{% block content %}
+<header>
+
+</header>
+
+<body>
+<div>
+    <div>
+        <span>Bounty</span>
+    </div>
+    <div id="request_content_box">
+        <div>
+            <label>contents</label>
+            <section>{{ quest.contents }}</section>
+            <label>customer</label>
+            <section>{{ quest.customer }}</section>
+        </div>
+        <div>
+            <label>places to go</label>
+            <section>{{ quest.places }}</section>
+        </div>
+        <div>
+            <label>destination</label>
+            <section>{{ quest.destination }}</section>
+        </div>
+        <div>
+            <label>comments</label>
+            <section>{{ quest.comments }}</section>
+        </div>
+        <div>
+            map will be available
+        </div>
+        <div>
+            <label>cost</label>
+            <section>{{ quest.cost }}</section>
+        </div>
+        <div>
+            <label>reward</label>
+            <section>{{ quest.reward }}</section>
+        </div>
+    </div>
+    <div>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal">Accept</button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">are u serious?</h4>
+                    </div>
+                    <div class="modal-body">
+                        Do you want to Accept?
+                    </div>
+                    <div class="modal-footer">
+                        <form action="{% url 'bounty:accept' quest.id %}" id="accept_button">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-default btn-sm" name="accept">Accept</button>
+                            <!--<a href="{% url 'bounty:accept' quest.id %}"><button type="submit" class="btn btn-default btn-sm" name="accept">Accept</button></a>-->
+                        </form>
+                        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button id="back_button" type="button" class="btn btn-default btn-sm">Back</button>
+    </div>
+
+</div>
+</body>
+
+{% endblock %}
+
+
+{% block script %}
+<script>
+    $(document).ready(function() {
+        $("#accept_button").submit(function(e){
+            e.preventDefault();
+            serializedData = $("#accept_button").serialize();
+            $.ajax({
+                type: 'POST',
+                url: "{% url 'bounty:accept' quest.id %}",
+                data: serializedData,
+                dataType: 'json',
+                success: function(response) {
+                    if(response.status == "success"){
+                        alert(response.message)
+                        window.location.replace("{% url 'bounty:progress_quest_del' quest.id %}")
+                    }
+                    else{
+                        alert(response.message)
+                    }
+                }
+            });
+        });
+    });
+</script>
+
+{% endblock %}

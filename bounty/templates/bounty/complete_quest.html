@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block title %} BOUNTY:complete {% endblock %}
+
+{% block head %}
+
+{% endblock %}
+
+
+{% block content %}
+<header>
+
+</header>
+
+<body>
+<div>
+    <div>
+        <span>Bounty</span>
+    </div>
+    <div id="request_content_box">
+        <div>
+            <label>
+                contents
+            </label>
+            <span>{{ quest.contents }}</span>
+        </div>
+        <div>
+            <label>
+                due
+            </label>
+            <span>{{ quest.due }}</span>
+            <label>
+                complete_date
+            </label>
+            <span>{{ quest.complete_date }}</span>
+        </div>
+        <div>
+            <label>
+                map
+            </label>
+        </div>
+        <div>
+            <label>
+                place to go
+            </label>
+            <span>{{ quest.places }}</span>
+            <label>
+                place to meet
+            </label>
+            <span>{{ quest.destination }}</span>
+        </div>
+        <div>
+            <label>
+                comments
+            </label>
+            <span>{{ quest.comments }}</span>
+        </div>
+
+        <div>
+            <label>
+                cost & reward
+            </label>
+            {{ quest.cost }} & {{ quest.reward }}
+        </div>
+    </div>
+    <button type="button" class="btn btn-default btn-sm" id="back_button">Back</button>
+</div>
+</body>
+
+{% endblock %}
+
+
+{% block script %}
+
+{% endblock %}

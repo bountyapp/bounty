@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+
+{% block title %} BOUNTY:progress {% endblock %}
+
+{% block head %}
+
+{% endblock %}
+
+
+{% block content %}
+<header>
+
+</header>
+
+<body>
+<div>
+    <div>
+        <span>Bounty in Progress</span>
+    </div>
+    <div id="request_content_box">
+        <div class="">
+            <section>Requested by</section>
+            <section>{{ quest.customer }}</section>
+        </div>
+        <div class="">
+            <section>Fulfilled by</section>
+            <section>{{ quest.deliver }}</section>
+        </div>
+        <div class="">
+            <section>Store</section>
+            <section>{{ quest.places }}</section>
+        </div>
+        <div>
+            <section>Contents</section>
+            <section>{{ quest.contents }}</section>
+        </div>
+        <div class="">
+            <section>Total[reward-cost]</section>
+            <section>{{ quest.total }}</section>
+        </div>
+        <div class="">
+            <section>map</section>
+            <section>will be available</section>
+        </div>
+        <div>
+            <div class="">
+                <section>Arriving In</section>
+                <section>will be available</section>
+            </div>
+            <div class="">
+                <section>ETA</section>
+                <section>will be available</section>
+            </div>
+        </div>
+    </div>
+    <div id="button_box" class="">
+        <button type="button" class="btn btn-default btn-sm">Call</button>
+        <button type="button" class="btn btn-default btn-sm">Message</button>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal">Cancel</button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">Why are u canceling this bounty?</h4>
+                    </div>
+                    <form action="{% url 'bounty:cancel' quest.id %}" id="cancel_button">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="message-text" class="control-label">Cancel reason:</label>
+                            <textarea class="form-control" id="message-text" name="reason"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-default btn-sm">Do</button>
+                        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+        <a href="{% url 'bounty:confirm_cus' quest.id %}"><button type="button" class="btn btn-default btn-sm">O</button></a>
+        <button id="back_button" type="button" class="btn btn-default btn-sm">Back</button>
+    </div>
+</div>
+</body>
+
+{% endblock %}
+
+
+{% block script %}
+<script>
+    $(document).ready(function() {
+        $("#cancel_button").submit(function(e){
+            e.preventDefault();
+            serializedData = $("#cancel_button").serialize();
+            $.ajax({
+                type: 'POST',
+                url: "{% url 'bounty:cancel' quest.id %}",
+                data: serializedData,
+                dataType: 'json',
+                success: function(response) {
+                    if(response.status == "success"){
+                        alert(response.message)
+                        window.location.replace("{% url 'bounty:bounty_board_cus' %}")
+                    }
+                    else{
+                        alert(response.message)
+                        window.location.replace("{% url 'bounty:main' %}")
+                    }
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}

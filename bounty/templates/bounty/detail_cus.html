@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+
+{% block title %} BOUNTY:detail {% endblock %}
+
+{% block head %}
+
+{% endblock %}
+
+
+{% block content %}
+<header>
+
+</header>
+
+<body>
+<div>
+    <div>
+        <span>Bounty</span>
+    </div>
+    <form action="{% url 'bounty:modify_quest' quest.id %}" method="post" id="posting_form">
+        {% csrf_token %}
+        <div id="request_content_box">
+            <div>
+                <label>
+                    contents
+                </label>
+                <input type="text" name="contents" value="{{ quest.contents }}">
+            </div>
+            <div>
+                <label>
+                    due
+                </label>
+                <input type="datetime-local" name="due" value="{{ quest.due }}">
+            </div>
+            <div>
+                <label>
+                    map
+                </label>
+            </div>
+            <div>
+                <label>
+                    place to go
+                </label>
+                <input type="text" name="places" value="{{ quest.places }}">
+                <label>
+                    place to meet
+                </label>
+                <input type="text" name="destination" value="{{ quest.destination }}">
+            </div>
+            <div>
+                <label>
+                    comments
+                </label>
+                <input type="text" name="comments" value="{{ quest.comments }}">
+            </div>
+
+            <div>
+                <label>
+                    cost & reward
+                </label>
+                <input type="text" name="cost" value="{{ quest.cost }}">
+                <input type="text" name="reward" value="{{ quest.reward }}">
+            </div>
+            {% if quest.canceled_reason_del != '-' %}
+            <div>
+                <label>
+                    canceled reason
+                </label>
+                <div>
+                    <span>{{ quest.canceled_reason_del }}</span>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        <div id="post_button_box">
+            <button type="button" class="btn btn-default btn-sm">modify</button>
+        </div>
+    </form>
+    <div>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal">Delete</button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                    </div>
+                    <div class="modal-body">
+                        Do you Really Really want to delete?
+                        if you delete the bounty, you can't restore it.
+                    </div>
+                    <div class="modal-footer">
+                        <a href="{% url 'bounty:delete_quest' quest.id %}"><button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Delete</button></a>
+                        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <button id="back_button" type="button" class="btn btn-default btn-sm">back</button>
+    </div>
+</div>
+</body>
+
+{% endblock %}
+
+
+{% block script %}
+
+{% endblock %}

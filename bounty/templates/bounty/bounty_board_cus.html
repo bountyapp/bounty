@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block title %} BOUNTY:request {% endblock %}
+
+{% block head %}
+
+{% endblock %}
+
+
+{% block content %}
+<header>
+
+</header>
+
+<body>
+<div>
+    <div class="">
+        <span>On Going Bounty</span>
+    </div>
+
+    <div class="">
+        <ul>
+            <!--ongoing quest-->
+            {% for quest in quest_ongoing %}
+            <a href="{% url 'bounty:progress_quest_cus' quest.id %}"><li>
+                <div class="bounty_box">
+                    <section class="quest_contents">
+                        <span>{{ quest.contents }}</span>
+                    </section>
+                    <section class="quest_progress">
+                        <span>{{ quest.status }}</span>
+                    </section>
+                </div>
+            </li></a>
+
+            <!--waiting quest-->
+            {% endfor %}
+            {% for quest in quest_waiting %}
+            <a href="{% url 'bounty:detail_cus' quest.id %}"><li>
+                <div class="bounty_box">
+                    <section class="quest_contents">
+                        <span>{{ quest.contents }}</span>
+                    </section>
+                    <section class="quest_progress">
+                        <span>{{ quest.status }}</span>
+                    </section>
+                </div>
+            </li></a>
+            {% endfor %}
+
+            <!--complete quest-->
+            {% for quest in quest_complete %}
+            <a href="{% url 'bounty:complete_quest' quest.id %}"><li>
+                <div class="bounty_box">
+                    <section class="quest_contents">
+                        <span>{{ quest.contents }}</span>
+                    </section>
+                    <section class="quest_progress">
+                        <span>{{ quest.status }}</span>
+                    </section>
+                </div>
+            </li></a>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="">
+        <a href="{% url 'bounty:request_page'%}"><button type="button" class="btn btn-default btn-sm">New</button></a>
+    </div>
+    <div>
+        <a href="{% url 'bounty:main' %}"><button type="button" class="btn btn-default btn-sm">Back</button></a>
+    </div>
+</div>
+</body>
+
+{% endblock %}
+
+
+{% block script %}
+
+{% endblock %}
