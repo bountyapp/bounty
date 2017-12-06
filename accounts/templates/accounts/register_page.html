@@ -1,82 +1,77 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 
 {% block title %} BOUNTY:register {% endblock %}
 
 {% block head %}
-
+<link rel="stylesheet" href="{% static 'css/register_page.css' %}">
 {% endblock %}
 
 
 {% block content %}
+<div class="container" id="content_container">
+    <div class="container" id="logo_container">
+        <img src="{% static 'img/Logo.png' %}" alt="">
+    </div>
 
-<div class="">
-    <!--<img src="" alt="">-->
+    <div class="container" id="register_container">
+        <form action="{% url 'accounts:register' %}" method="post" id="register_form">
+            {% csrf_token %}
+            <div id="register_form_container">
+                <div class="register_info_container">
+                    <label class="register_info">User ID</label>
+                    <input type="text" required autocomplete="off" name="username" id="username" class="register_data">
+                </div>
+
+                <div class="register_info_container">
+                    <label class="register_info">email</label>
+                    <input type="email" required autocomplete="off" name="email" id="email" class="register_data">
+                </div>
+
+                <div class="register_info_container">
+                    <label class="register_info">password</label>
+                    <input type="password" required autocomplete="off" name="password1" id="password1" class="register_data">
+                </div>
+
+                <div class="register_info_container">
+                    <label class="register_info">password confirm</label>
+                    <input type="password" required autocomplete="off" name="password2" id="password2" class="register_data">
+                </div>
+            </div>
+            <div id="register_button_container">
+                <button type="submit" class="btn btn-default btn-sm">Sign up</button>
+                <button type="button" class="btn btn-default btn-sm" id="back_button">Back</button>
+            </div>
+
+        </form>
+    </div>
 </div>
-
-<div class="">
-    <form action="{% url 'accounts:register' %}" method="post" id="register_form">
-        {% csrf_token %}
-        <div class="">
-            <label>
-                User ID
-            </label>
-            <input type="text" required autocomplete="off" name="username" id="username">
-        </div>
-
-        <div class="">
-            <label>
-                email
-            </label>
-            <input type="email" required autocomplete="off" name="email" id="email">
-        </div>
-
-        <div class="">
-            <label>
-                password
-            </label>
-            <input type="password" required autocomplete="off" name="password1" id="password1">
-        </div>
-
-        <div class="">
-            <label>
-                password check
-            </label>
-            <input type="password" required autocomplete="off" name="password2" id="password2">
-        </div>
-
-        <div class="">
-            <button type="submit">sign up</button>
-        </div>
-
-    </form>
-</div>
-
 {% endblock %}
 
 
 {% block script %}
 <script>
-$(document).ready(function() {
-            $("#register_form").submit(function(e){
-                e.preventDefault();
-                serializedData = $("#register_form").serialize();
-                $.ajax({
-                    type: 'POST',
-                    url: "{% url 'accounts:register' %}",
-                    data: serializedData,
-                    dataType: 'json',
-                    success: function(response) {
-                        if(response.status == "success"){
-                            alert(response.message);
-                            window.location="{% url 'accounts:login_page' %}";
-                        }
-                        else{
-                            alert(response.message)
-                        }
+    $(document).ready(function() {
+        $("#register_form").submit(function(e){
+            e.preventDefault();
+            serializedData = $("#register_form").serialize();
+            $.ajax({
+                type: 'POST',
+                url: "{% url 'accounts:register' %}",
+                data: serializedData,
+                dataType: 'json',
+                success: function(response) {
+                    if(response.status == "success"){
+                        alert(response.message);
+                        window.location="{% url 'accounts:login_page' %}";
                     }
-                });
+                    else{
+                        alert(response.message)
+                    }
+                }
             });
-            /* end of script */
         });
+        /* end of script */
+    });
 </script>
 {% endblock %}

@@ -59,9 +59,9 @@
 {% endblock %}
 <script>
     {% if messages %}
-    {% for message in messages %}
-    alert('{{ message }}');
-    {% endfor %}
+        {% for message in messages %}
+            alert('{{ message }}');
+        {% endfor %}
     {% endif %}
 </script>
 
@@ -70,18 +70,19 @@
     var url2 = "http://127.0.0.1:8000/bounty{{ quest.id }}/progress_quest_del/"
     var url3 = "http://127.0.0.1:8000/bounty{{ quest.id }}/progress_quest_cus/"
     $(document).ready(function() {
-        if(document.referrer != url){
+        if(document.referrer != url && document.referrer != url2 && document.referrer != url3){
             $("#back_button").click(function(e){
                 window.location.href=document.referrer;
             });
         }
-        else{
+        else if(document.referrer == url)
+        {
             $("#back_button").click(function(e){
                 window.location.href="{% url 'bounty:bounty_board_del' %}";
             });
         }
 
-        if(document.referrer != url2 || document.referrer != url3){
+        else{
             $("#back_button").click(function (e){
                 window.location.href="{% url 'accounts:mypage' %}"
             });

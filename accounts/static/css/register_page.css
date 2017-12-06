@@ -1,0 +1,53 @@
+
+#content_container{
+    margin-top: 15%;
+}
+
+#logo_container{
+    text-align: center;
+}
+
+#logo_container>img{
+    width: 22rem;
+}
+
+#register_container{
+    text-align: center;
+    margin-top: 1rem;
+}
+
+#register_form_container{
+    transform: translateX(-3.5rem);
+}
+
+#password2{
+    transform: translateY(-1rem);
+}
+
+.register_info_container{
+    margin-bottom: 0.5rem;
+}
+
+.register_info{
+    width: 6.7rem;
+    color: #88d8b0;;
+}
+
+.register_data{
+    width: 14.5rem;
+}
+
+.btn{
+    width: 7rem;
+}
+
+body{
+    background-color: #ffeead;
+}
+
+.btn{
+    width: 7rem;
+    background-color: #88d8b0;
+    color: navajowhite;
+}
+

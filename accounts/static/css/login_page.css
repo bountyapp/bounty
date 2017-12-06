@@ -1,0 +1,44 @@
+
+#content_container{
+    margin-top: 15%;
+}
+
+#logo_container{
+    text-align: center;
+}
+
+#logo_container>img{
+    width: 22rem;
+}
+
+#login_container{
+    text-align: center;
+    margin-top: 1rem;
+}
+
+#login_form_container{
+    transform: translateX(-3.5rem);
+}
+
+#login_button_container{
+    margin-top: 1rem;
+}
+
+.login_data{
+    width: 14.5rem;
+}
+
+.login_info{
+    width: 6.7rem;
+    color: #88d8b0;
+}
+
+.btn{
+    width: 7rem;
+    background-color: #88d8b0;
+    color: navajowhite;
+}
+
+body{
+    background-color: #ffeead;
+}
