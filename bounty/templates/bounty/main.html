@@ -9,28 +9,35 @@
 
 {% block content %}
 
-<body>
-<div class="container-fluid">
-    <div class="col-md-6 col-sm-6 col-xs-6">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-            <img src="" alt="" class="img-rounded">
-        </div>
-        <div class="col-md-12 col-sm-12 col-xs-12">
-            <a href="{% url 'bounty:bounty_board_cus' %}"><div><span>Offer Bounty</span></div></a>
-        </div>
-    </div>
 
-    <div class="col-md-6 col-sm-6 col-xs-6">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-            <img src="" alt="" class="img-rounded">
-        </div>
-        <div class="col-md-12 col-sm-12 col-xs-12">
-            <a href="{% url 'bounty:bounty_board_del' %}"><div><span>Bounty Hunt</span></div></a>
+
+
+<div class="container-fluid mx-auto text-center" style="color:#88d8b0; background-color: #ffeead; height:100%">
+    <div id="contentWrapper" style="height: inherit;">
+        <div id="mainCol" class="h-100 col-xs-10 col-xs-offset-1"
+             style=" height:inherit;display:table">
+            <div style="display: table-cell;vertical-align: middle">
+                <div class="row">
+                    <div class="">
+                        <!--<img src="" alt="">-->
+                    </div>
+                    <a href="{% url 'bounty:bounty_board_cus' %}" style="color:inherit;text-decoration: none">
+                        <h1><span>Offer Bounty</span></h1>
+                    </a>
+                </div>
+
+                <div class="row">
+                    <div>
+                        <!--<img src="" alt="">-->
+                    </div>
+                    <a href="{% url 'bounty:bounty_board_del' %}"style="color:inherit;text-decoration: none">
+                        <h1><span>Bounty Hunt</span></h1>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-</body>
-
 
 {% endblock %}
 

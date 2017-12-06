@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load staticfiles %}
 {% block title %} BOUNTY:login {% endblock %}
 <link rel="stylesheet" href="">
 {% block head %}
@@ -9,28 +9,33 @@
 
 {% block content %}
 
-<div class="">
-    <!--<img src="" alt="">-->
-</div>
-
-<div class="">
-    <form action="{% url 'accounts:login' %}" method="post" id="login_form">
-        {% csrf_token %}
-        <div id="login_container">
-            <div>
-                <label for="">User ID</label>
-                <input type="text" name="username" value="">
+<div class="container-fluid text-center mx-auto" style="height:inherit;color:#88d8b0; background-color: #ffeead">
+    <div id="loginWrapper" class="container" style="height: inherit;display: table;">
+        <div style="display: table-cell;vertical-align: middle">
+            <div class="">
+                <img src="{% static 'img/Logo.png' %}" alt="My image"/>
             </div>
-            <div>
-                <label for="">password</label>
-                <input type="password" name="password" value="">
-            </div>
+            <form action="{% url 'accounts:login' %}" method="post" id="login_form">
+                {% csrf_token %}
+                <div id="login_container">
+                    <div>
+                        <label for="">User ID</label>
+                        <input type="text" name="username" value="">
+                    </div>
+                    <div>
+                        <label for="">password</label>
+                        <input type="password" name="password" value="">
+                    </div>
+                </div>
+                <div id="login_button_container">
+                    <input type="submit" name="login" value="login"
+                           style="color:navajowhite;text-decoration: none;background-color: #88d8b0;border:none;">
+                    <a href="{% url 'accounts:register_page' %}"><input type="button" name="" value="register"
+                                                                        style="color:navajowhite;text-decoration: none;background-color: #88d8b0;border: none"></a>
+                </div>
+            </form>
         </div>
-        <div id="login_button_container">
-            <input type="submit" name="login" value="login">
-            <a href="{% url 'accounts:register_page' %}"><input type="button" name="" value="register"></a>
-        </div>
-    </form>
+    </div>
 </div>
 
 {% endblock %}
@@ -38,8 +43,8 @@
 
 {% block script %}
 <script>
-    $(document).ready(function() {
-        $("#login_form").submit(function(e){
+    $(document).ready(function () {
+        $("#login_form").submit(function (e) {
             e.preventDefault();
             serializedData = $("#login_form").serialize();
             $.ajax({
@@ -47,11 +52,11 @@
                 url: "{% url 'accounts:login' %}",
                 data: serializedData,
                 dataType: 'json',
-                success: function(response) {
-                    if(response.status == "success"){
-                        window.location="{% url 'bounty:main' %}"
+                success: function (response) {
+                    if (response.status == "success") {
+                        window.location = "{% url 'bounty:main' %}"
                     }
-                    else{
+                    else {
                         alert(response.message)
                     }
                 }
