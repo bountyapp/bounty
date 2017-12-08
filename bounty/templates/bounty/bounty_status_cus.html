@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %} BOUNTY:request {% endblock %}
+
+{% block head %}
+{% endblock %}
+
+
+{% block content %}
+<header>
+
+</header>
+
+<body>
+<div id="contentWrapper">
+    <div id="content" class="container">
+        <div class="col">
+            <div id="title" class="row">
+                <h1>Bounty In Progress</h1>
+            </div>
+            <div id="bountyHunter" class="row">
+                <h2>Fulfilled by <span> <!---Name of the fulfiller included here--></span></h2>
+                <h3>He is currently <span id="status"> <!--Status from what the bounty hunter inputs--></span></h3>
+            </div>>
+            <div id="serviceInfo" class="row">
+                <div id="cost" class="">
+                    Total Cost: <span id="finalCost">Actual Cost Included</span>
+                </div>
+            </div>
+            <div id="mapInfo" class="row">
+                <div id="map" class="row">
+                    <!---MAP HERE--->
+                </div>
+                <div id="ETA" class="row">
+                    <div class="col-6">
+                        <div class="row">
+                            <p>Arriving In</p>
+                        </div>
+                        <div class="row">
+                            <span id="clock"> <!-----Insert # of minutes---></span>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="row">
+                            <p>Estimated Arrival Time</p>
+                        </div>
+                        <div id="arrival" class="row">
+                            <span id="arrivalTime"><!-----Insert actual arrival time---></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="buttons" class="row">
+                <button type="button" class="btn btn-primary">Call</button>
+                <button type="button" class="btn btn-secondary">Message</button>
+                <button type="button" class="btn btn-danger">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+{% endblock %}
+
+
+{% block script %}
+
+{% endblock %}

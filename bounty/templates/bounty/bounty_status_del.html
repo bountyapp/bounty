@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %} BOUNTY:request {% endblock %}
+
+{% block head %}
+{% endblock %}
+
+
+{% block content %}
+<header>
+
+</header>
+
+<body>
+<div id="contentWrapper">
+    <div id="content" class="container">
+        <div class="col">
+            <div id="title" class="row">
+                <h1>Bounty In Progress</h1>
+            </div>
+            <div id="bountyHunter" class="row">
+                <div id="status" class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="Dropdown">I am
+                        <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        <li>Purchasing</li>
+                        <li>On My Way</li>
+                        <li>Waiting Nearby</li>
+                    </ul>
+                </div>
+            </div>
+            >
+            <div id="serviceInfo" class="row">
+                <div id="cost" class="">
+                    Total Cost: <span id="finalCost">Actual Cost Included</span>
+                </div>
+            </div>
+            <div id="mapInfo" class="row">
+                <div id="map" class="row">
+                    <!---MAP HERE--->
+                </div>
+                <div id="ETA" class="row">
+                    <div class="col-6">
+                        <div class="row">
+                            <p>Arriving In</p>
+                        </div>
+                        <div class="row">
+                            <span id="clock"> <!-----Insert # of minutes---></span>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="row">
+                            <p>Estimated Arrival Time</p>
+                        </div>
+                        <div id="arrival" class="row">
+                            <span id="arrivalTime"><!-----Insert actual arrival time---></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="buttons" class="row">
+                <button type="button" class="btn btn-primary">Call</button>
+                <button type="button" class="btn btn-secondary">Message</button>
+                <button type="button" class="btn btn-danger">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+{% endblock %}
+
+
+{% block script %}
+
+{% endblock %}
